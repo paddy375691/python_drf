@@ -1,4 +1,5 @@
 from django.db import models
+from system_config.models import Credential
 
 
 # Create your models here.
@@ -33,6 +34,7 @@ class ServerGroup(models.Model):
 class Server(models.Model):
     idc = models.ForeignKey(Idc, on_delete=models.PROTECT, verbose_name="IDC机房")
     server_group = models.ManyToManyField(ServerGroup, verbose_name="主机分组")
+    credential = models.ForeignKey(Credential, on_delete=models.PROTECT, blank=True, null=True, verbose_name="凭据")
 
     name = models.CharField(max_length=30, blank=True, verbose_name="名称")
     hostname = models.CharField(max_length=30, unique=True, verbose_name="主机名")
