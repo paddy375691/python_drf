@@ -17,8 +17,8 @@ class ServerGroupSerializer(serializers.ModelSerializer):
 
 
 class ServerSerializer(serializers.ModelSerializer):
-    idc = IdcSerializer(read_only=True)
-    server_group = ServerGroupSerializer(many=True, read_only=True)
+    # idc = IdcSerializer(read_only=True)
+    # server_group = ServerGroupSerializer(many=True, read_only=True)
 
     class Meta:
         model = Server

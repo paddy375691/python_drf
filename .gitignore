@@ -1,4 +1,5 @@
 node_modules
+migrations
 .DS_Store
 dist
 dist-ssr
@@ -6,3 +7,4 @@ cache
 .cache
 .temp
 *.local
+__pycache__/

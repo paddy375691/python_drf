@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
+    'django_filters',
     'corsheaders',
     'cmdb',
     'system_config'
@@ -131,5 +133,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     # 分页
-    'DEFAULT_PAGINATION_CLASS': 'libs.custom_pagination.CustomPagination'
+    'DEFAULT_PAGINATION_CLASS': 'libs.custom_pagination.CustomPagination',
+    # 认证
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    # 权限
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAuthenticated'  # 登录后就能访问所有API
+    # ],
 }
+
+CLIENT_COLLECT_DIR = "/tmp/"

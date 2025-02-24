@@ -14,10 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from libs.token_auth import CustomAuthToken, ChangeUserPasswordView
+from cmdb.views import HostCollectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    re_path('^api/login/$', CustomAuthToken.as_view()),
+    re_path('^api/change_password/$', ChangeUserPasswordView.as_view()),
+    re_path('^api/cmdb/host_collect/$', HostCollectView.as_view()),
 ]
 
 # CMDB
@@ -28,6 +33,10 @@ router = routers.DefaultRouter()
 router.register(r'cmdb/idc', IdcViewSet, basename="idc")
 router.register(r'cmdb/server_group', ServerGroupViewSet, basename="server_group")
 router.register(r'cmdb/server', ServerViewSet, basename="server")
+
+# 凭据
+from system_config.views import CredentialViewSet
+router.register(r'config/credential', CredentialViewSet, basename='credential')
 
 urlpatterns += [
     path('api/', include(router.urls))

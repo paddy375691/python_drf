@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class Credential(models.Model):
     auth_choice = (
-        (1, "秘钥"),
-        (2, "密码")
+        (1, "密码"),
+        (2, "秘钥")
     )
     name = models.CharField(max_length=30, verbose_name="凭据名称")
     username = models.CharField(max_length=20, verbose_name="用户名")

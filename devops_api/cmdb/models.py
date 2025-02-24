@@ -46,16 +46,16 @@ class Server(models.Model):
                                     choices=(('vm', '虚拟机'), ('cloud_vm', '云主机'), ('physical_machine', '物理机')),
                                     verbose_name="机器类型")
     os_version = models.CharField(max_length=50, blank=True, null=True, verbose_name="系统版本")
-    public_ip = models.JSONField(blank=True, null=True, verbose_name="公网IP")
-    private_ip = models.JSONField(blank=True, null=True, verbose_name="内网IP")
+    public_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="公网IP")
+    private_ip = models.CharField(max_length=100, blank=True, null=True, verbose_name="内网IP")
     cpu_num = models.CharField(max_length=10, blank=True, null=True, verbose_name="CPU")
     cpu_model = models.CharField(max_length=100, blank=True, null=True, verbose_name="CPU型号")
     memory = models.CharField(max_length=30, blank=True, null=True, verbose_name="内存")
-    disk = models.JSONField(blank=True, null=True, verbose_name="硬盘")
-    put_shelevs_date = models.DateField(null=True, blank=True, verbose_name="上架日期")
-    off_shelevs_date = models.DateField(null=True, blank=True, verbose_name="下架日期")
+    disk = models.CharField(max_length=100, blank=True, null=True, verbose_name="硬盘")
+    put_shelves_date = models.DateField(null=True, blank=True, verbose_name="上架日期")
+    off_shelves_date = models.DateField(null=True, blank=True, verbose_name="下架日期")
     expire_datetime = models.DateTimeField(blank=True, null=True, verbose_name="租约过期时间")
-    is_verfied = models.CharField(max_length=10, blank=True, choices=(('verfied', '已验证'), ('unverified', '未验证')),
+    is_verified = models.CharField(max_length=10, blank=True, choices=(('verfied', '已验证'), ('unverified', '未验证')),
                                   default='unverified', verbose_name="SSH验证状态")
     update_time = models.DateTimeField(auto_now_add=True, verbose_name="更新时间")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
